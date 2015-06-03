@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find barrett_hand_control)/config/bhand.yaml" command="load"/>
+
+  <!-- load the controllers that come up when started-->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/" args="joint_state_controller 
+		bh_j11_position_controller 
+		bh_j12_position_controller 
+		bh_j22_position_controller 
+		bh_j32_position_controller"/> 
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+	<!--  <param name="use_gui" value="True"/> -->
+  </node> 
+
+  <!-- once the joint_state is published, run the robot_state_publisher, the namespace has to be adapted --> 
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="bhand_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+  </node>
+
+</launch>

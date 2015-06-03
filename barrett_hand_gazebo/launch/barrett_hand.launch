@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- roslaunch arguments -->
+	<arg name="debug" default="false"/>
+	<arg name="gui" default="true"/>
+
+  	<!-- Resume the logic in empty_world.launch, changing only the name -->
+  	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+    		<arg name="world_name" value="$(find barrett_hand_gazebo)/worlds/bh_empty.world"/>
+    		<arg name="debug" value="$(arg debug)" />
+    		<arg name="gui" value="$(arg gui)" />
+    		<arg name="paused" value="false"/>
+    		<arg name="use_sim_time" value="true"/>
+    		<arg name="headless" value="false"/>
+  	</include>
+
+	<arg name="pos_z" default="0"/>
+
+  	<!-- Upload URDF into the ROS Parameter Server -->
+      	<param name="robot_description"
+         	command="$(find xacro)/xacro.py '$(find barrett_hand_description)/robots/bh_alone.urdf.xacro'" />
+
+	<node name="bh_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false"
+		output="screen" 
+        	args="-urdf -z $(arg pos_z) -model bhand -param robot_description "/> 
+
+     	<!-- bh_control launch file -->
+     	<include file="$(find barrett_hand_control)/launch/bhand_controller.launch"/> 
+	
+</launch>

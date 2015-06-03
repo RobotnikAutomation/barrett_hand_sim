@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <name>barrett_hand_control</name>
+  <version>0.1.0</version>
+  <description>The barrett_hand_control package is intended to control the gazebo simulation of the barrett hand</description>
+
+  <maintainer email="egambaro@robotnik.es">elena</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

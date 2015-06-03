@@ -1,0 +1,15 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50.0 
+bh_j11_position_controller:
+  type: position_controllers/JointPositionController
+  joint: bh_j11_joint
+bh_j12_position_controller:
+  type: position_controllers/JointPositionController
+  joint: bh_j12_joint
+bh_j22_position_controller:
+  type: position_controllers/JointPositionController
+  joint: bh_j22_joint
+bh_j32_position_controller:
+  type: position_controllers/JointPositionController
+  joint: bh_j32_joint
