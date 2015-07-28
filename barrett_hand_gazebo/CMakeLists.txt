@@ -25,3 +25,17 @@ catkin_package(
     roscpp 
     gazebo_ros 
 )
+
+install(DIRECTORY launch
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+install(DIRECTORY worlds
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+install(DIRECTORY include
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+install(
+  TARGETS gazebo_mimic_plugin
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

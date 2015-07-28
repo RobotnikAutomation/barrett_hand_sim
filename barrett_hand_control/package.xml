@@ -5,6 +5,10 @@
   <description>The barrett_hand_control package is intended to control the gazebo simulation of the barrett hand</description>
 
   <maintainer email="egambaro@robotnik.es">elena</maintainer>
+  
+  <url type="website">http://wiki.ros.org/barrett_hand_control</url>
+  <url type="repository">https://github.com/RobotnikAutomation/barrett_hand_sim.git</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/barrett_hand_sim/issues</url>
 
   <license>BSD</license>
 
