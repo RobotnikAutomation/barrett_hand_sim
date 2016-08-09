@@ -2,8 +2,8 @@
 Changelog for package barrett_hand_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2016-08-09)
+------------------
 * Fixed incorrect install location
   Old location caused this error in gazebo upon inclusion:
   Failed to load plugin libgazebo_mimic_plugin.so: libgazebo_mimic_plugin.so: cannot open shared object file: No such file or directory
