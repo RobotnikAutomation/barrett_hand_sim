@@ -2,7 +2,9 @@
 Changelog for package barrett_hand_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.1.0 (2015-07-28)
+Forthcoming
 -----------
+* Adding changelog files
+* Setting CMakelists and package.xml for the release
 * Add Barrett Hand gazebo and Barrett Hand control packages
-* Contributors: Elena Gambaro
+* Contributors: Elena Gambaro, RomanRobotnik
