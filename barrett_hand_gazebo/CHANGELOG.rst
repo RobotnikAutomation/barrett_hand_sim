@@ -2,6 +2,9 @@
 Changelog for package barrett_hand_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.1.1 (2016-08-09)
 ------------------
 * Fixed incorrect install location
