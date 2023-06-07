@@ -12,7 +12,12 @@ MimicPlugin::MimicPlugin():  ModelPlugin()
 
 MimicPlugin::~MimicPlugin()
 {
+  // https://github.com/crigroup/robotiq/issues/4#issuecomment-505989048
+#if GAZEBO_MAJOR_VERSION >= 9
+  this->updateConnection.reset();
+#else
   event::Events::DisconnectWorldUpdateBegin(this->updateConnection);
+#endif
 
   kill_sim = true;
 }
@@ -50,8 +55,21 @@ void MimicPlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf )
 
 void MimicPlugin::UpdateChild()
 {
-   //mimic_joint_->SetAngle(0, math::Angle(joint_->GetAngle(0).Radian()*multiplier_));
-   mimic_joint_->SetPosition(0,joint_->GetAngle(0).Radian()*multiplier_);
+  // https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins/blob/509a32ea6accc58d03cebd9d670ae44635adc924/src/mimic_joint_plugin.cpp#L160-L167
+#if GAZEBO_MAJOR_VERSION >= 8
+  double angle = joint_->Position(0)*multiplier_;
+#else
+  double angle = joint_->GetAngle(0).Radian()*multiplier_;
+#endif
+
+  // https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins/blob/509a32ea6accc58d03cebd9d670ae44635adc924/src/mimic_joint_plugin.cpp#L178-L188
+#if GAZEBO_MAJOR_VERSION >= 9
+   mimic_joint_->SetPosition(0, angle, true);
+#elif GAZEBO_MAJOR_VERSION > 2
+   mimic_joint_->SetPosition(0, angle);
+#else
+   mimic_joint_->SetAngle(0, math::Angle(angle));
+#endif
 }
 
 GZ_REGISTER_MODEL_PLUGIN(MimicPlugin);
